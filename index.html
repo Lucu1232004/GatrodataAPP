@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GastroData | Alpha Prototype</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <nav class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">🍔</div>
+                <span>GastroData</span>
+            </div>
+            <ul class="nav-links">
+                <li class="active"><i class="fas fa-chart-line"></i> Dashboard</li>
+                <li><i class="fas fa-box"></i> Inventario</li>
+                <li><i class="fas fa-brain"></i> Predicciones</li>
+                <li id="nav-about"><i class="fas fa-info-circle"></i> Metodología</li>
+                <li><i class="fas fa-history"></i> Capas Medallón</li>
+            </ul>
+            <div class="user-profile">
+                <div class="avatar">S</div>
+                <div class="user-info">
+                    <p class="name">Samuel Admin</p>
+                    <p class="role">Gerente</p>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="main-header">
+                <div class="header-title">
+                    <h1>GastroData Intelligence</h1>
+                    <p>Prototipo Alpha: Gestión Predictiva y Arquitectura Medallón</p>
+                </div>
+                <div class="header-actions">
+                    <div class="simulator-panel card">
+                        <div class="sim-control">
+                            <label>Tráfico: <span id="val-traffic">100</span>%</label>
+                            <input type="range" id="sim-traffic" min="50" max="200" value="100">
+                        </div>
+                        <div class="sim-control">
+                            <label>Precios: <span id="val-price">0</span>%</label>
+                            <input type="range" id="sim-price" min="-20" max="50" value="0">
+                        </div>
+                    </div>
+                    <button class="btn-refresh" id="download-report" style="background: var(--accent-secondary); color: white;">
+                        <i class="fas fa-file-download"></i> Reporte
+                    </button>
+                    <button class="btn-refresh" id="refresh-data">
+                        <i class="fas fa-sync"></i> Sincronizar
+                    </button>
+                </div>
+            </header>
+
+            <!-- KPI Cards -->
+            <section class="kpi-grid">
+                <div class="kpi-card">
+                    <div class="kpi-icon sales"><i class="fas fa-dollar-sign"></i></div>
+                    <div class="kpi-data">
+                        <p class="kpi-label">Ingresos Totales (Mes)</p>
+                        <h2 id="kpi-sales">$0 COP</h2>
+                        <span class="kpi-trend positive">+12.5% vs prev</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon margin"><i class="fas fa-percent"></i></div>
+                    <div class="kpi-data">
+                        <p class="kpi-label">Margen de Ganancia</p>
+                        <h2 id="kpi-margin">0%</h2>
+                        <span class="kpi-trend positive">Optimizado</span>
+                    </div>
+                </div>
+                <div class="kpi-card">
+                    <div class="kpi-icon waste"><i class="fas fa-leaf"></i></div>
+                    <div class="kpi-data">
+                        <p class="kpi-label">Desperdicio Estimado</p>
+                        <h2 id="kpi-waste">4.2%</h2>
+                        <span class="kpi-trend negative">-0.8% esta semana</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Charts Section -->
+            <section class="charts-container">
+                <div class="chart-card main-chart">
+                    <div class="chart-header">
+                        <h3>Ventas vs Proyección (Reactive)</h3>
+                    </div>
+                    <div class="canvas-wrapper">
+                        <canvas id="salesChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-card secondary-chart">
+                    <h3>Popularidad</h3>
+                    <div class="canvas-wrapper">
+                        <canvas id="popularityChart"></canvas>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Bottom Section: Alerts & Insights -->
+            <section class="bottom-grid">
+                <div class="card alerts-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-exclamation-triangle"></i> Alertas de Inferencia</h3>
+                    </div>
+                    <div class="alerts-list" id="alerts-container">
+                        <!-- Alerts will be injected by JS -->
+                    </div>
+                </div>
+                <div class="card insights-card">
+                    <div class="card-header">
+                        <h3><i class="fas fa-utensils"></i> Top Proyectado (Próxima Semana)</h3>
+                    </div>
+                    <div class="predictions-list" id="predictions-table">
+                        <!-- Projected dishes will be injected here -->
+                    </div>
+                    
+                    <div class="card-header" style="margin-top: 1.5rem;">
+                        <h3><i class="fas fa-database"></i> Live Feed (Capa Bronce)</h3>
+                    </div>
+                    <div class="feed-container" id="live-feed">
+                        <!-- Raw events injected by JS -->
+                    </div>
+                    <div class="method-card">
+                        <h4>Métricas de Ciencia de Datos</h4>
+                        <div class="metrics-grid">
+                            <div class="m-item"><span>Precisión (R²):</span> <strong>0.89</strong></div>
+                            <div class="m-item"><span>MAE:</span> <strong>$42,500</strong></div>
+                            <div class="m-item"><span>Modelo:</span> <strong>Ensamble RF</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Methodology Section (Hidden by default) -->
+            <section id="methodology-section" class="card" style="display: none; margin-top: 2rem;">
+                <div class="card-header">
+                    <h2><i class="fas fa-book"></i> Metodología: Data Thinking & Arquitectura</h2>
+                </div>
+                <div class="insight-content" style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+                    <div>
+                        <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Proceso de Ideación</h4>
+                        <p style="font-size: 0.9rem;">Se identificó que el principal problema de los restaurantes es el desperdicio de insumos por falta de previsión. La solución es un Sistema de Gestión Inteligente basado en predicción de demanda.</p>
+                        
+                        <h4 style="color: var(--accent-primary); margin: 1rem 0 0.5rem;">Toma de Decisiones (AHP)</h4>
+                        <p style="font-size: 0.9rem;">Se priorizó la **Escalabilidad** y **Facilidad de Visualización** sobre integraciones locales costosas, permitiendo una implementación rápida en la fase Alpha.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--accent-primary); margin-bottom: 0.5rem;">Arquitectura Medallón</h4>
+                        <ul style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.8;">
+                            <li><strong style="color: #b87333;">Bronce:</strong> Captura de tickets crudos desde el POS.</li>
+                            <li><strong style="color: #c0c0c0;">Plata:</strong> Limpieza de duplicados y estandarización de costos.</li>
+                            <li><strong style="color: #ffd700;">Oro:</strong> Generación de KPIs financieros y modelos de inferencia.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
