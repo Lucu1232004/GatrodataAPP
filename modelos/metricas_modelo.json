@@ -1,0 +1,99 @@
+{
+  "accuracy": 0.858,
+  "f1_score": 0.8589,
+  "r2_score": 0.9387,
+  "mae": 1.36,
+  "rmse": 1.79,
+  "fecha_entrenamiento": "2026-05-01",
+  "modelo": "XGBoost",
+  "total_registros": 1620,
+  "dias_entrenamiento": 180,
+  "features": [
+    "precio",
+    "costo",
+    "margen_pct",
+    "es_fin_semana",
+    "es_festivo",
+    "dia_semana_enc",
+    "clima_enc",
+    "categoria_enc",
+    "precio_prom_categoria"
+  ],
+  "feature_importance_clasificador": {
+    "es_fin_semana": 0.4438999891281128,
+    "precio": 0.11060000211000443,
+    "costo": 0.1096000000834465,
+    "es_festivo": 0.10320000350475311,
+    "categoria_enc": 0.09260000288486481,
+    "clima_enc": 0.05490000173449516,
+    "dia_semana_enc": 0.045499999076128006,
+    "precio_prom_categoria": 0.03959999978542328,
+    "margen_pct": 0.0
+  },
+  "feature_importance_regresor": {
+    "es_fin_semana": 0.5896000266075134,
+    "costo": 0.11569999903440475,
+    "precio": 0.11180000007152557,
+    "categoria_enc": 0.05380000174045563,
+    "clima_enc": 0.03929999843239784,
+    "es_festivo": 0.03830000013113022,
+    "dia_semana_enc": 0.027400000020861626,
+    "precio_prom_categoria": 0.024000000208616257,
+    "margen_pct": 0.0
+  },
+  "classification_report": {
+    "ALTA": {
+      "precision": 0.8333333333333334,
+      "recall": 0.7352941176470589,
+      "f1-score": 0.78125,
+      "support": 34.0
+    },
+    "BAJA": {
+      "precision": 0.7575757575757576,
+      "recall": 0.9036144578313253,
+      "f1-score": 0.8241758241758241,
+      "support": 83.0
+    },
+    "MEDIA": {
+      "precision": 0.9128205128205128,
+      "recall": 0.8599033816425121,
+      "f1-score": 0.8855721393034826,
+      "support": 207.0
+    },
+    "accuracy": 0.8580246913580247,
+    "macro avg": {
+      "precision": 0.8345765345765345,
+      "recall": 0.8329373190402988,
+      "f1-score": 0.8303326544931022,
+      "support": 324.0
+    },
+    "weighted avg": {
+      "precision": 0.864709775820887,
+      "recall": 0.8580246913580247,
+      "f1-score": 0.8588966859333774,
+      "support": 324.0
+    }
+  },
+  "matriz_confusion": [
+    [
+      25,
+      0,
+      9
+    ],
+    [
+      0,
+      75,
+      8
+    ],
+    [
+      5,
+      24,
+      178
+    ]
+  ],
+  "labels_clasificacion": [
+    "ALTA",
+    "BAJA",
+    "MEDIA"
+  ]
+}
